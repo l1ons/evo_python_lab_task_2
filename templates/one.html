@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card" style="margin-top:50px" >
+    <div class="card-header">
+        Вкажіть ваше ім'я будь ласка
+    </div>
+    <form action="" method="POST" style="padding:20px;">
+        {{ form.hidden_tag() }}
+        <div class="form-group row">
+            {{ form.name.label(class="col-sm-2 col-form-label") }}
+            {% if form.name.errors %}
+            <div class="col-sm-10">
+                {{ form.name(class="form-control form-control-lg is-invalid", placeholder="Ім'я") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.name.errors %}
+                    <span>{{ errors }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="col-sm-10">
+                {{ form.name(class="form-control", placeholder="Ім'я") }}
+            </div>
+            {% endif %}
+        </div>
+
+        {{ form.submit(class="btn btn-primary") }}
+
+    </form>
+</div>
+{% endblock %}
